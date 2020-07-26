@@ -1,2 +1,2 @@
-# cp
+# competitive programming codes
 ...
