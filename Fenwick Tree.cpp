@@ -1,6 +1,6 @@
 /*
-   Complexity Query = O(log n) worst case, O(1) best case, in case of input is a power of 2.
-   Complexity Update = O(log n)
+   Complexity Query   = O(log n) worst case, O(1) best case, in case of input is a power of 2.
+   Complexity Update  = O(log n)
 */
 
 #include <bits/stdc++.h>
