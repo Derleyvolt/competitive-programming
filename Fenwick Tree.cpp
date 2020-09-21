@@ -2,16 +2,25 @@
 
 using namespace std;
 
-int BIT[1000], a[1000], n;
-void update(int x, int val)
-{
+#define MAXN 1000
+
+int BIT[MAXN], n;
+
+void update(int x, int val) {
       for(; x <= n; x += x&-x)
         BIT[x] += val;
 }
-int query(int x)
-{
+int query(int x) {
      int sum = 0;
      for(; x > 0; x -= x&-x)
         sum += BIT[x];
      return sum;
+}
+
+int main() {
+    cin >> n;
+    vi arr(n);
+    for(int i = 0; i < n; i++)
+        arr[i] = i;
+    cout << query(5) - query(2) << endl; // query(3, 5)
 }
