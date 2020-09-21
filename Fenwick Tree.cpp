@@ -11,15 +11,15 @@ using namespace std;
 
 int BIT[MAXN], n;
 
-void update(int x, int val) {
-      for(; x <= n; x += x&-x)
-        BIT[x] += val;
+void update(int i, int v) {
+      for(; i <= n; i += i&-i)
+        BIT[i] += v;
 }
 
-int query(int x) {
+int query(int v) {
      int sum = 0;
-     for(; x > 0; x -= x&-x)
-        sum += BIT[x];
+     for(; v > 0; v -= v&-v)
+        sum += BIT[v];
      return sum;
 }
 
