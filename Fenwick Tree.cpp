@@ -15,6 +15,7 @@ void update(int x, int val) {
       for(; x <= n; x += x&-x)
         BIT[x] += val;
 }
+
 int query(int x) {
      int sum = 0;
      for(; x > 0; x -= x&-x)
