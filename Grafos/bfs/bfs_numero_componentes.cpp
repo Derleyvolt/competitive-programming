@@ -33,12 +33,12 @@ int main() {
         adj[a].push_back(b);
         adj[b].push_back(a);
     }
-    int counter = 0;
+    int components = 0;
     // 1-indexed
     for(int i = 1; i <= n; i++) {
         if(vis[i] == 0) {
             bfs(i);
-            counter++;
+            components++;
         }
     }
     cout << counter << endl;
