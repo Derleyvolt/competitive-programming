@@ -7,7 +7,7 @@ const int MAXN = 100;
 int n;
 vector<int> adj[MAXN], dist;
 
-vector<int> bfs(int s, int p) {
+void bfs(int s, int p) {
     queue<int> q; q.push(s);
     dist[s] = 0; // considerando a primeira camada como tendo distância 1
     while(not q.empty()) {
@@ -19,7 +19,6 @@ vector<int> bfs(int s, int p) {
             }
         }
     }
-    return arr;
 }
 
 int main() {
