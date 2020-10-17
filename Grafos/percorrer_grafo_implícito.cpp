@@ -2,15 +2,22 @@
 
 using namespace std; 
 
-// O vetor da linha x é formado a partir desses:
-// [1, -1, 0, 0]
-// [0, 0, 1, -1]
-// que são os offsets necessários para se movimentar num grid, horizontalmente e verticalmente.
-// como cada movimento altera apenas um eixo por vez, ou seja, ora vou pra cima, ora vou pra baixo, esquerda ou direita, 
-// então sempre haverá um 1 ou -1 junto com um 0 no par ordenado.. então, os primeiros 2 pares podem representar o cima e baixo,
-// e os últimos 2 pares podem representar o direita e esquerda.
+/*
+    O vetor da linha x é formado a partir desses:
+    [1, -1, 0, 0]
+    [0, 0, 1, -1]
+    que são os offsets necessários para se movimentar num grid, horizontalmente e verticalmente.
+    como cada movimento altera apenas um eixo por vez, ou seja, ora vou pra cima, ora vou pra baixo, esquerda ou direita, 
+    então sempre haverá um 1 ou -1 junto com um 0 no par ordenado.. então, os primeiros 2 pares podem representar o cima e baixo,
+    e os últimos 2 pares podem representar o direita e esquerda.
+*/
 
 pair<int, int> mov[] = { {1, 0}, {-1, 0}, {0, 1}, {0, -1} };
+
+// pra decorar os offsets da diagonal basta ver que são todos os arranjos com repetição tomados 2 a 2 
+
+pair<int, int> mov_diagonally[] = { {1, 0}, {-1, 0}, {0, 1}, {0, -1}, 
+                                    {-1, 1}, {1,-1}, {-1, -1}, {1, 1} }; 
 
 int matrix_a[10][10];
 
