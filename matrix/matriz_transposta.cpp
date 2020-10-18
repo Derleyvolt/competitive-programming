@@ -35,7 +35,14 @@ int main() {
     
     for (int i = 0; i < n; i++) {
         for (int k = 0; k < m; k++) {
-            matrix_b[k][i] = matrix_a[i][k];
+            // a matriz tranposta é criada aqui.. É bem simples, enquanto percorremos a linha da matriz original, percorremos também
+            // a coluna correspondente da matriz transposta.
+            // então, por ex, todo elemento que estiver na primeira linha, será transportado à primeira coluna, e todo elemento da segunda 
+            // coluna será transportado à segunda linha, da matriz transposta. Então o elemento a[1][2] será transportado 
+            // pra a[2][1], primeira coluna e segunda linha..
+            matrix_b[k][i] = matrix_a[i][k]; // aqui, enquanto percorre a linha i da matriz original, percorre a coluna i, da matriz tranposta
+                                             // então é de suma importante que as colunas da matriz tranposta tenham o mesmo tamanho da matriz original, por
+                                             // questões óbvias..
         }
     }
 
