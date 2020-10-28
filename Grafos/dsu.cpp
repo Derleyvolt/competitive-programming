@@ -21,6 +21,7 @@ int root(int u) {
 void join(int u, int v) {
     u = root(u);
     v = root(v);
+    if(u == v) return; // checa se dois vértices pertencem ao mesmo conjunto disjunto
     if(s[v] >= s[u]) swap(v, u);
     p[v] = u;
     s[u] += s[v];
