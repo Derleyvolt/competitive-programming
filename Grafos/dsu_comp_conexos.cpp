@@ -38,7 +38,7 @@ int main() {
         // A ideia é simples, inicialmente todos os subconjuntos disjuntos têm tamanho 1, então se eu unir qualquer elemento com qualquer outro
         // eu vou ter n-1 conjuntos disjuntos (componentes conexas).. basta verificar que estamos tratando sempre o novo conjunto formado
         // após a união como sendo um único elemento..
-        if(root(a) != root(b)) //n -= root(a) != root(b);
+        if(root(a) != root(b)) // n -= root(a) != root(b);
           --n;
         join(a, b);
     }
