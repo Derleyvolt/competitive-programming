@@ -23,10 +23,16 @@ int query(int v) {
      return sum;
 }
 
+// não é necessário..
+int query(int a, int b) {
+    if(a > 1)
+        return query(b) - query(a-1);   
+    return query(b);
+}
+
 int main() {
-    cin >> n;
-    vi arr(n);
-    for(int i = 0; i < n; i++)
-        arr[i] = i;
-    cout << query(5) - query(2) << endl; // query(3, 5)
+    n = 10;
+    for(int i = 1; i <= n; i++)
+        update(i, i);
+    cout << query(3, 5) << endl;
 }
