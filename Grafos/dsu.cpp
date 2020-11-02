@@ -18,6 +18,7 @@ int root(int u) {
     return parent[u] = root(parent[u]); // path compression
 }
 
+// lembre-se de que se tirar as 3 primeiras linhas dessa função join é preciso passar os representantes dos vértices/nós ao invés..
 void join(int u, int v) {
     u = root(u);
     v = root(v);
