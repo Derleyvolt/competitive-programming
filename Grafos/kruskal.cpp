@@ -2,7 +2,8 @@
 
 using namespace std; 
 
-const int maxn = 1010;
+const int maxn = 1e3 + 10;
+const int maxm = 1e6 / 2;
 
 int parent[maxn];
 
@@ -24,11 +25,15 @@ void join(int u, int v) {
     parent[v] = u;
 }
 
-array<int, 3> arr[maxn]; // u, v e w
+array<int, 3> arr[maxm]; // u, v e w
+
+// às vezes é melhor usar uma struct
+struct e {
+    int w, u, v;    
+};
 
 int mst() {
     int ans = 0;
-
     sort(arr, arr + m); // ordenada as arestas em função dos pesos
 
 /*   
