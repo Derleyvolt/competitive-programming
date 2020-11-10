@@ -14,11 +14,11 @@ struct node  {
   
 // cria um nó
 node* newNode(int data)  {  
-	node* node   = new ::node;
-	node->data   = data;  
-	node->left   = NULL;  
-	node->right  = NULL;  
-	return node;
+    node* node   = new ::node;
+    node->data   = data;  
+    node->left   = NULL;  
+    node->right  = NULL;  
+    return node;
 }  
  
 node* search(node* root, int data) {
@@ -34,8 +34,30 @@ node* search(node* root, int data) {
     return search(root->left, data);
 }
  
-// o nó passado não deve ser nulo, senão levará a um comportamento indefinido..
+node* insert(node* root, int data) {
+    // Se a árvore não é vazia, retorne um novo nó
+    if (root == NULL)
+        return newNode(data);
+ 
+    // busque recursivamente
+    if (data < root->data)
+        root->left  = insert(root->left, data);
+    else if (data > root->data)
+        root->right = insert(root->right, data);
+ 
+    // retorne o nó, sem alteração
+    return root;
+}
 
+void inorder(node* root) {
+    if (root != NULL) {
+        inorder(root->left);
+	cout << root->key << endl;
+        inorder(root->right);
+    }
+}
+
+// o nó passado não deve ser nulo, senão levará a um comportamento indefinido..
 int minValue(struct node* node) {  
     struct node* current = node;  
 
