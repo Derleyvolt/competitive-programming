@@ -6,7 +6,7 @@ using namespace std;
   
 using namespace std;
   
-struct node  {
+struct node {
     struct node* left;  
     struct node* right;  
     int data;  
@@ -14,11 +14,11 @@ struct node  {
   
 // cria um nó
 node* newNode(int data)  {  
-    node* node   = new ::node;
+    node* root   = new node;
     node->data   = data;  
     node->left   = NULL;  
     node->right  = NULL;  
-    return node;
+    return root;
 }  
  
 node* search(node* root, int data) {
@@ -49,6 +49,30 @@ node* insert(node* root, int data) {
     return root;
 }
 
+node* delete_node(node* root, int data) {
+   if (root == NULL) return root;
+      if (data < root->data)
+         root->left  = delete_node(root->left, data);
+      else if (data > root->key)
+         root->right = delete_node(root->right, data);
+   else {
+      if (root->left == NULL) {
+         node *temp = root->right;
+         delete root;
+         return temp;
+      }
+      else if (root->right == NULL) {
+         node *temp = root->left;
+         delete root;
+         return temp;
+      }
+      node* temp  = min_value(root->right);
+      root->data  = temp->data;
+      root->right = delete_node(root->right, temp->data);
+   }
+   return root;
+}
+
 void inorder(node* root) {
     if (root != NULL) {
         inorder(root->left);
@@ -70,7 +94,7 @@ int minValue(struct node* node) {
 
 // versão recursiva
 int min_value(node* root) {
-    if(root->left == null)
+    if(root->left == NULL)
         return root->data;
     return min_value(root->left);
 }
