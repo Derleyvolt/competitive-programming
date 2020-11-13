@@ -21,6 +21,7 @@ using namespace std;
       
       A heap é parcialmente ordenada, o que significa, basicamente, que a relação se dá entre pais e filhos mas não precisa acontencer entre nós irmãos
       ou nós primos.. https://hyosup0513.github.io/data%20structure/2020/06/14/What-is-a-Heap.html
+                      https://www.hackerearth.com/practice/notes/heaps-and-priority-queues/
       
     O filho à esquerda é obtido assim: left_child  = 2 * i + 1
     O filho à direita é obtido assim:  right_child = 2 * i + 2
