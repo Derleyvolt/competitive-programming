@@ -21,7 +21,7 @@ using namespace std;
 
       O último nível de uma Heap tem seus elementos todos sempre mais à esquerda, se o último nível não estiver cheio. É fácil entender o motivo.
 
-      A heap é parcialmente ordenada, o que significa, basicamente, que a relação se dá entre pais e filhos mas não precisa acontencer entre nós irmãos
+      A heap é parcialmente ordenada, o que significa, basicamente, que a relação se dá entre pais e filhos mas não entre nós irmãos
       ou nós primos.. https://hyosup0513.github.io/data%20structure/2020/06/14/What-is-a-Heap.html
                       https://www.hackerearth.com/practice/notes/heaps-and-priority-queues/
 		      http://pages.cs.wisc.edu/~mcw/cs367/lectures/heaps.html
