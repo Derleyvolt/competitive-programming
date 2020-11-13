@@ -33,11 +33,12 @@ class Heap {
 public:
         Heap() = default;
         void  insert(int element);
-        void  delete_max();
-        int   extract_max();
+        void  delete_maxmin();
+        int   extract_maxmin();
         int   size();
 private:
-        
+        T comp; // comparator.. define se é um max ou min heap.
+	
         vector<int> heap; // implicit data structure
         int   left(int parent);
         int   right(int parent);
@@ -58,7 +59,7 @@ void Heap<T>::insert(int element) {
 }
 
 template<class T>
-void Heap<T>::delete_max() {
+void Heap<T>::delete_maxmin() {
     if(heap.empty()) {
         cout << "A pilha está vazia" << endl;
         return;
@@ -71,7 +72,7 @@ void Heap<T>::delete_max() {
 }
 
 template<class T>
-int Heap<T>::extract_max() {
+int Heap<T>::extract_maxmin() {
     if(heap.empty()) return -1;
     return heap.front();
 }
@@ -101,10 +102,9 @@ int Heap<T>::parent(int child) {
 }
 
 // atualiza a árvore de baixo pra cima
-
 template<class T>
 void Heap<T>::heapifyup(int in) {
-    if (in >= 0 && parent(in) >= 0 && not T()(heap[parent(in)], heap[in])) {
+    if (in >= 0 && parent(in) >= 0 && not comp(heap[parent(in)], heap[in])) {
         swap(heap[in], heap[parent(in)]);
         heapifyup(parent(in));
     }
@@ -115,15 +115,14 @@ template<class T>
 void Heap<T>::heapifydown(int in) {
     int l_child = left(in);  // pega o índice do filho à esquerda
     int r_child = right(in); // pega o índice do filho à direita
-    // evitar índices negativos.. short-circuit evita que a segunda 
-    // condição seja verificada se a primeira for falsa
-    if (l_child >= 0 && r_child >= 0 && not T()(heap[l_child], heap[r_child]))
+    // verifica os bounds e pega o maior/menor filho
+    if (l_child >= 0 && r_child >= 0 && not comp(heap[l_child], heap[r_child]))
         l_child = r_child;
        
     // vai chamar a função recursivamente até chegar no último nível
     // da árvore, onde o nó não terá mais filhos e l_child seja negativo.
     if (l_child > 0) {
-        swap(heap[l_child], heap[in]);
+        swap(heap[l_child], heap[in]); // troca de posição com o maior/menor filho
         heapifydown(l_child);
     }
 }
