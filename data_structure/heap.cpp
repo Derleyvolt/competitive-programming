@@ -3,6 +3,30 @@
 
 using namespace std; 
 
+
+/*
+    Complexity:
+    heapifydown(int index) = Log(n), pode precisar percorrer todos os níveis da árvore, e a altura duma árvore binária completa é Log(n), n é o número de vértiece/nodes
+    heapifyup(int index)   = Log(n)
+    
+    A criação da heap tem complexidade O(nlog(n)). A função heapifyup será chamada n vezes dentro da função insert
+    
+    Proriedades:
+      Uma binary heap é uma árvore completa, ou seja, todos os níveis da árvore são cheios, com exceção do último que pode ou não ser cheio.
+      O número máximo de elementos que uma binary heap 0-indexada pode ter é 2^(h-1) - 1, onde h é a altura. 
+            https://www.quora.com/The-height-of-any-binary-tree-of-n-nodes-is-between-log-n-and-n-1-What-is-the-proof-for-this-observation)
+      
+      O último nível de uma Heap tem seus elementos todos sempre mais à esquerda, se o último nível não estiver cheio..
+      
+      
+    O filho à esquerda é obtido assim: left_child  = 2 * i + 1
+    O filho à direita é obtido assim:  right_child = 2 * i + 2
+    o nó pai é obtido assim:           parent      = (child - 1) / 2
+    
+      
+      
+*/
+
 class Heap {
 public:
         Heap() = default;
@@ -67,6 +91,7 @@ int Heap::parent(int child) {
     return index;
 }
 
+// atualiza a árvore de baixo pra cima
 void Heap::heapifyup(int in) {
     if (in >= 0 && parent(in) >= 0 && heap[parent(in)] > heap[in]) {
         swap(heap[in], heap[parent(in)]);
@@ -74,13 +99,14 @@ void Heap::heapifyup(int in) {
     }
 }
 
+// atualiza a árvore de cima pra baixo
 void Heap::heapifydown(int in) {
     int l_child = left(in);  // pega o índice do filho à esquerda
     int r_child = right(in); // pega o índice do filho à direita
     // evitar índices negativos.. short-circuit evita que a segunda 
     // condição seja verificada se a primeira for falsa
     if (l_child >= 0 && r_child >= 0 && heap[l_child] > heap[r_child])
-       l_child = r_child;
+        l_child = r_child;
        
     // vai chamar a função recursivamente até chegar no último nível
     // da árvore, onde o nó não terá mais filhos e l_child seja negativo.
