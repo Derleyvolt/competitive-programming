@@ -34,7 +34,7 @@ int main() {
     for(auto [x, y] : mov) {
         x += l; // posso alterar as variáveis, pois são cópias e não referências..
         y += r; 
-        if(matrix_a[x][y] == -1 and x >= 0 and y >= 0 and x < n and x < m) {
+        if(x >= 0 and y >= 0 and x < n and x < m and matrix_a[x][y] == -1) {
             ...
         }
     }
