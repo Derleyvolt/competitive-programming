@@ -9,7 +9,6 @@ public:
         void  insert(int element);
         void  delete_min();
         int   extract_min();
-        void  show_elements();
         int   size();
 private:
         vector<int> heap; // implicit data structure
@@ -35,9 +34,11 @@ void Heap::delete_min() {
         cout << "A pilha está vazia" << endl;
         return;
     }
+    // poe o último elemento, o elemento mais à direita no último nível, no root da árvore.    
     heap[0] = heap.back();
     heap.pop_back();
-    heapifydown(0);
+        
+    heapifydown(0); // reorganiza a árvore de cima pra baixo afim de manter as propriedades da binary heap.
 }
 
 int Heap::extract_min() {
@@ -48,7 +49,7 @@ int Heap::extract_min() {
 int Heap::left(int parent) {
     int l = 2 * parent + 1;
     if(l < heap.size()) 
-        return 1;
+        return l;
     return -1;
 }
 
@@ -80,6 +81,9 @@ void Heap::heapifydown(int in) {
     // condição seja verificada se a primeira for falsa
     if (l_child >= 0 && r_child >= 0 && heap[l_child] > heap[r_child])
        l_child = r_child;
+       
+    // vai chamar a função recursivamente até chegar no último nível
+    // da árvore, onde o nó não terá mais filhos e l_child seja negativo.
     if (l_child > 0) {
         swap(heap[l_child], heap[in]);
         heapifydown(l_child);
