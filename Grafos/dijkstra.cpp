@@ -31,8 +31,8 @@ void dijkstra(int s) {
         // min_heap e são maiores ou iguais a u.. Portanto, dist[u], nesse ponto, é a melhor distância..
         
         for(auto [v, w] : g[u]) {
-            if(dist[u] + w < dist[v]) {
-                dist[v] = dist[u] + w; // atualiza a distância do source até o vértice v
+            if(dist[v] > dist[u] + w) {
+                dist[v] = dist[u] + w; // atualiza a distância do source até o vértice v. Essa operação é conhecida como RELAXAMENTO
                 q.push({dist[v], v});  // insere na min_heap
             }
         }
