@@ -28,7 +28,7 @@ void dijkstra(int s) {
         // esse vértice é considerado como fechado, não pode haver nenhum outro com menor distância
         // que dist[u] .. se pensarmos bem, todos os vértices que serão atualizados depois desse vértice u terão sempre
         // peso maior ou igual a u, pq? pq todos os vértices que virão depois de u herdarão o peso dos vértices que estão na 
-        // min_heap e são maiores ou iguais a u.. Portanto, dist[u], nesse ponto, é a melhor distância..
+        // min_heap e que, portanto, são maiores ou iguais a u.. Sendo assim, dist[u], nesse ponto, tem a menor distância de s -> u
         
         for(auto [v, w] : g[u]) {
             if(dist[v] > dist[u] + w) {
