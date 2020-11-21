@@ -4,6 +4,7 @@ using namespace std;
 
 #define pii pair<int, int>
 #define vi vector<int>
+#define INF 1<<30 // importante não usar INT_MAX como 'infinito', pois em algumas variações do algoritmo de dijkstra podemos sofrer de overflow..
 
 const int maxn = 1e3;
 
@@ -22,7 +23,11 @@ void dijkstra(int s) {
         auto [d, u] = q.top(); q.pop(); // distância acumulada e o vértice
         
         if(d > dist[u]) continue; // verificação extremamente importante. Bypassing o gargalo que é o fato de serem adicionados à min_heap mais de um
-                                  // vértice com distâncias diferentes..
+                                  // vértice com distâncias diferentes. Esse if, apesar de ser extremamente importante pra performance do algoritmo,
+                                  // não interfere na corretude do mesmo, ou seja, podemos omiti-lo e o código vai funcionar do mesmo modo. pq?
+                                  // Digamos que tenha 2 duplicatas: a duplicata de menor valor virá primeiro, atualizará seus vizinhos e etc..
+                                  // depois, em algum momento, a segunda duplicada, a de valor maior, virá e, por ser maior, não conseguirá
+                                  // atualizar nenhum dos vizinhos anteriormente atualizados pela duplicada de menor custo/valor.
         
         // nesse ponto do algoritmo é garantido que dist[u] guarda a melhor distância de s -> u
         // esse vértice é considerado como fechado, não pode haver nenhum outro com menor distância
