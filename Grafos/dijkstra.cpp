@@ -15,7 +15,7 @@ vi dist;             // vetor de distância acumulada
 
 void dijkstra(int s) {
     priority_queue<pii, vector<pii>, greater<pii>> q; // estrutura de dado built-in do c++ implementada como um heap.. deleção e inserção em O(logn)
-    dist.assign(n+1, INT_MAX); // inicialmente todas as distâncias sao infitinas
+    dist.assign(n+1, INF); // inicialmente todas as distâncias sao infitinas
     dist[s] = 0;               // exceto o source vertex
     q.push({dist[s], s});      // insere no min_heap a distância inicial e o source, respectivamente
     
