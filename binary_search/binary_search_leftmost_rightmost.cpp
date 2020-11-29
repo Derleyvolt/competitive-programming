@@ -8,16 +8,28 @@ int arr[maxn];
 
 int n;
 
-int binary_search(int v) {
+// caso haja duplicatas do elemento procurado, o algoritmo pega o elemento mais à esquerda
+int binary_search_leftmost(int v) {
     int l = 0, r = n-1;
-    while(l <= r) {
+    while(l < r) {
         int mid = l + (r - l) / 2;
-        if(arr[mid] == v)
-            return v;
         if(arr[mid] < v)
             l = mid + 1;  
         else
-            r = mid - 1;
+            r = mid;
+    }
+    return -1;
+}
+
+// caso haja duplicatas do elemento procurado, o algoritmo pega o elemento mais à direita
+int binary_search_rightmost(int v) {
+    int l = 0, r = n-1;
+    while(l < r) {
+        int mid = l + (r - l) / 2;
+        if(arr[mid] < v)
+            l = mid;  
+        else
+            r = mid-1;
     }
     return -1;
 }
