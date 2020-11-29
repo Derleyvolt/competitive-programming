@@ -10,7 +10,7 @@ int n;
 
 int binary_search(int v) {
     int l = 0, r = n-1;
-    while(l <= r) {
+    while(l < r) {
         int mid = l + (r - l) / 2;
         if(arr[mid] == v)
             return v;
@@ -19,7 +19,7 @@ int binary_search(int v) {
         else
             r = mid - 1;
     }
-    return -1;
+    return arr[l];
 }
 
 int main() {
