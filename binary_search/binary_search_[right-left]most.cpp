@@ -56,7 +56,7 @@ int main() {
     // que o valor encontrado.
     int index = bb_2(4) - 1;          
     if(index >= 0 and arr[index] == 3)
-        cout << arr[index] << endl;
+        cout << index << endl;
     else
         cout << -1 << endl;
     return 0;
