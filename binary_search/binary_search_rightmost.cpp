@@ -12,7 +12,7 @@ int bb_2(int v) {
     while(l <= r) {
         int m = l + (r - l) / 2;
         if(arr[m] == v)
-            return v;
+            return m;
         if(arr[m] > v) {
             ans = m; // guarda sempre o valor mais próximo de v, que é maior que v
             r = m - 1;
