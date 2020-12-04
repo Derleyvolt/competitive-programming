@@ -8,34 +8,42 @@ int arr[maxn], n;
 
 int binary_search_rightmost(int v) {
     int l = 0, r = n-1;
-    int ans = -1; // variável que guardará o primeiro cara que é maior que o valor buscado
+    int ans = -1; // guarda os caras encontrados anteriormente
     while(l <= r) {
         int m = l + (r - l) / 2;
-        if(arr[m] == v)
-            return m;
-        if(arr[m] > v) {
-            ans = m; // guarda sempre o valor mais próximo de v, que é maior que v
-            r = m - 1;
-        }
-        else
+        
+        /*
+            esse código é útil se quisermos pegar os elementos mais à direita mas somente os que são iguais a v.. no entanto, o outro código é
+            mais curto e simples e requer apenas uma verificação pra saber se o cara mais à direita é v.
+            if(arr[m] == v) {
+                ans = arr[m];
+                l = m + 1;
+            }
+            else if(arr[m] < v)
+                l = m + 1;
+            else
+                r = m - 1;
+        */
+        
+        if(arr[m] <= v) {
+            ans = arr[m];  // guarda sempre o valor mais próximo de v, que é >= que v
             l = m + 1;
+        } else
+            r = m - 1;
     }
-    return ans;
+    return ans; // se estiver procurando exatamente por v e não pelo maior valor menor que ele basta verificar se ans é == v.
 }
 
 int binary_search_leftmost(int v) {
     int l = 0, r = n-1;
-    int ans = -1; // variável que guardará o primeiro cara que é menor que o valor buscado
+    int ans = -1;
     while(l <= r) {
         int m = l + (r - l) / 2;
-        if(arr[m] == v)
-            return m;
-        if(arr[m] < v) {
-            ans = m; // guarda sempre o valor mais próximo de v, que é menor que v
+        if(arr[m] >= v) {
+            ans = arr[m];
+            r = m - 1;    
+        } else
             l = m + 1;
-        }
-        else
-            r = m - 1;
     }
     return ans;
 }
@@ -50,13 +58,11 @@ int main() {
     
     // A explicação daqui é destinado à função binary_search_rightmost.. a explicação pra função binary_search_leftmost é análoga.
     
-    // queremos buscar pelo valor 3.. então colocamos pra encontrar o valor 4, pois o algoritmo vai buscar
-    // pelo valor imediato que for >= 4.. ou seja, se o 4 estiver no array, o 4 será encontrado, senão, o próximo
-    // valor maior que ele será encontrado. E com isso, se o valor 3 estiver no array, ele deve estar um índice a menos
-    // que o valor encontrado.
-    int index = bb_2(4) - 1;          
-    if(index >= 0 and arr[index] == 3)
-        cout << index << endl;
+    // O algoritmos são bem simples então não vou colocar nenhuma descrição aqui.
+    
+    int ans = binary_search_rightmost(4); // pega o maior valor <= que 4          
+    if(ans != -1)
+        cout << ans << endl;
     else
         cout << -1 << endl;
     return 0;
