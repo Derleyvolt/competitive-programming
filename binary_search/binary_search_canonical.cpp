@@ -10,24 +10,24 @@ int n;
 
 int binary_search(int v) {
     int l = 0, r = n-1;
-    while(l < r) {
-        int mid = l + (r - l) / 2;
-        if(arr[mid] == v)
-            return v;
-        if(arr[mid] < v)
-            l = mid + 1;  
+    while(l <= r) {
+        int m = l + (r - l) / 2;
+        if(arr[m] == v)
+            return arr[m];
+        if(arr[m] < v)
+            l = m + 1;  
         else
-            r = mid - 1;
+            r = m - 1;
     }
-    return arr[l];
+    return -1;
 }
 
 int main() {
     cin >> n;
     for(int i = 0; i < n; i++)
         cin >> arr[i];
-    int value; cin >> value;
-    if(binary_search(value) != -1)
+    int v; cin >> v;
+    if(binary_search(v) != -1)
         cout << "valor encontrado" << endl;
     else
         cout << "valor nao encontrado" << endl;
