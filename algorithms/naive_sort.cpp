@@ -2,7 +2,6 @@
 
 using namespace std; 
 
-
 mt19937 rg(time(0));
 
 int rng(int min, int max) {
