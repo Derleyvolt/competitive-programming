@@ -17,9 +17,10 @@ int main() {
 
     running();
     
-    auto end   = chrono::steady_clock::now();
-    auto tempo = chrono::duration_cast<chrono::milliseconds>(end - start).count();
+    auto end = chrono::steady_clock::now();
+    
+    auto time = chrono::duration_cast<chrono::milliseconds>(end - start).count();
 
-    cout << "Tempo decorrido em milissegundos: " << tempo << " ms" << endl;
+    cout << "Tempo decorrido em milissegundos: " << time << " ms" << endl;
     return 0;
 }
