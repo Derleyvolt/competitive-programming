@@ -3,7 +3,7 @@
 using namespace std; 
 
 void running() {
-    int until = 4 * 1e8; // geralmente é a quantidade de operações executadas em um segundo em vários juízes
+    int until = 4 * 1e8; // geralmente é a quantidade de operações executadas em um segundo em vários online judges
     
     int a = 0;
     
