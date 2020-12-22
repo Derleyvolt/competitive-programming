@@ -55,6 +55,12 @@ void dec_to_bi(int n) {
     cout << r;
 }
 
+/*
+   Se temos um número D numa base b, e queremos saber a quantidade de dígitos esse número tem numa outra base b',
+   basta dividirmos um número
+
+ */
+
 int main() {
     int d; cin >> d;
     dec_to_bi(d);   // recursivo
