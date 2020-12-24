@@ -52,6 +52,18 @@ void update(int u, int l, int r, int idx, int val){
     tsum[u] = comb(tsum[esq(u)], tsum[dir(u)]);
 }
 
+void update(int v, int l, int r, int pos, int val) {
+    if (l == r)
+        t[v] = val, return;
+    
+    int m = (l + r) / 2;  
+    if (pos <= m)
+        update(v*2, l, m, pos, val);
+    else
+        update(v*2+1, m+1, r, pos, val);  
+    t[v] = t[v*2] + t[v*2+1];
+}
+
 int query(int u, int i, int j, int l, int r){
     if (l<=i && j<=r){
         return tsum[u]; // [i..i] está completamente dentro de [l..r]
