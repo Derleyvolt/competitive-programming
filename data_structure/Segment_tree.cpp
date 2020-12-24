@@ -52,16 +52,25 @@ void update(int u, int l, int r, int idx, int val){
     tsum[u] = comb(tsum[esq(u)], tsum[dir(u)]);
 }
 
-void update(int v, int l, int r, int pos, int val) {
+void update(int u, int l, int r, int pos, int val) {
     if (l == r)
-        t[v] = val, return;
+        t[u] = val, return;
     
     int m = (l + r) / 2;  
     if (pos <= m)
-        update(v*2, l, m, pos, val);
+        update(u*2, l, m, pos, val);
     else
-        update(v*2+1, m+1, r, pos, val);  
-    t[v] = t[v*2] + t[v*2+1];
+        update(u*2+1, m+1, r, pos, val);
+    t[u] = t[u*2] + t[u*2+1];
+}
+
+int query(int v, int tl, int tr, int l, int r) {
+    if (l > r) 
+        return 0;
+    if (l == tl and r == tr)
+        return t[v];
+    int m = (tl + tr) / 2;
+    return sum(v*2, tl, m, l, min(r, m)) + sum(v*2+1, m + 1, tr, max(l, m + 1), r);
 }
 
 int query(int u, int i, int j, int l, int r){
