@@ -27,6 +27,10 @@ int toggle_bit(int num, int pos) {
     return num ^ (1 << pos);
 }
 
+int number_of_set_bits(int value) {
+    return __builtin_popcount(value); // função embutida do GCC, retorna o número de bits setados no inteiro.. O(n)     
+}
+
 int main() {
     int num, pos; cin >> num >> pos;
     num = clear_bit(num, pos);
