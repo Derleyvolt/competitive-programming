@@ -20,7 +20,7 @@ bool check_bit(int num, int pos) {
 }
 
 int clear_bit(int num, int pos) {
-    return num & (~0 ^ (1 << pos));
+    return num & ~(1 << pos);
 }
 
 int toggle_bit(int num, int pos) {
