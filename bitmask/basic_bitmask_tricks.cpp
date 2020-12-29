@@ -26,9 +26,9 @@ int difference(int a, int b) { // a ordem é importante, obviamente..
 
 int main() {
     int a = 12, b = 14; // 1100, 1110
-    show_bits(union_set(a, b), 4);
-    show_bits(intersection_set(a, b), 4);
-    show_bits(difference(a, b), 4);
-    show_bits(difference(b, a), 4); // difference não é comutativa
+    show_bits(union_set(a, b), 4, 1);
+    show_bits(intersection_set(a, b), 4, 1);
+    show_bits(difference(a, b), 4, 1);
+    show_bits(difference(b, a), 4, 1); // difference não é comutativa
     return 0;
 }
