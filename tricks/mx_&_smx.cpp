@@ -2,6 +2,8 @@
 
 using namespace std;
 
+// Motivação https://www.spoj.com/problems/KGSS/
+
 /*
     É comum nos depararmos com situações onde devemos pegar o maior e o segundo maior elemento de um conjunto de 3 ou 4 elementos..
     eis aqui minha default-way de fazer isso. a complexidade do sort não causa overhead por conta da quantidade de elementos, então funciona bem.
