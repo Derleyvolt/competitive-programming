@@ -1,2 +1,1 @@
 # competitive programming codes
-Accepted
