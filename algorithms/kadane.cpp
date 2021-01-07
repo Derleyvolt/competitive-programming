@@ -4,6 +4,7 @@ using namespace std;
 
 // Maximum Subarray Sum
 
+// O(n)
 int kadane(vector<int>& arr) {
     int max_cur = 0, max_total = -1;
     for(auto a:arr) {
