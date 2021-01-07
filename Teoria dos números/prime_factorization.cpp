@@ -2,6 +2,8 @@
 
 using namespace std;
 
+// O(sqrt(n))
+
 vector<int> factors(int n) {
 	vector<int> ans;
 	for(int i = 2; i * i <= n; i++) {
