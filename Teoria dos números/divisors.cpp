@@ -4,6 +4,8 @@ using namespace std;
 
 #define ll long long
 
+
+// O(sqrt(n))
 vector<ll> divisors(ll n) {
     vector<ll> ans;
     for(ll i = 1; i*i <= n; i++) {
