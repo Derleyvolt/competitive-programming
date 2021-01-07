@@ -7,21 +7,21 @@ using namespace std;
 const int maxn = 1e6 + 10;
 
 bitset<maxn> table;
+vector<int>  primes;
 
 // mostra todos os primos de 1 até n
 void sieve(int n) {
     for(int i = 2; i <= n; i++) {
         if(table[i]) continue;
-        for(int k = i * 2; k <= n; k += i)
-            table[k] = 1;
+        primes.push_back(i);
+        for(int j = i * 2; j <= n; j += i)
+            table[j] = 1;
     }
 }
 
 int main() {
     sieve(100);
-    for(int i = 2; i <= 100; i++) {
-        if(table[i] == 0)
-            cout << i << endl;
-    }
+    for(auto a:primes) cout << a << endl;
     return 0;
 }
+
