@@ -4,6 +4,8 @@ using namespace std;
 
 vector<int> arr = { 1, 2, 3, 4, 5 };
 
+// O(2^n)
+
 void subsets(int n = arr.size()) {
     for (int i = 0; i < (1 << n); i++) {
         // pegando apenas os subconjuntos com 3 elementos
