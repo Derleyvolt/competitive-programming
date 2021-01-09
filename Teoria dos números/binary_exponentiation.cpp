@@ -16,6 +16,8 @@ ll exp(ll a, ll b) {
     return res;
 }
 
+// exponenciação binária modulada
+
 ll mod_exp(ll a, ll b) {
     a %= m;
     ll res = 1;
