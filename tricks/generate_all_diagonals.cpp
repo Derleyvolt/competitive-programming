@@ -1,3 +1,13 @@
+/*
+   suponha uma matriz quadrada.
+
+   Se partirmos de uma célula [r, c] e buscarmos pelos elementos da diagonal à direita, então os itens estarão em [r+k, c+k], onde k = [0, 1, 2 ... dim] 
+   até que r+k >= dim ou c+k >= dim.
+
+   O mesmo processo é usado pra encontrar as diagonais à esquerda, mudamos só a condição de parada e se incrementamos ou decrementamos..
+*/
+
+
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -6,23 +16,23 @@ using namespace std;
 
 const int dim = 4; // as dimensões da matriz..
 
-vector<vector<int>> matrix;
+vector<vi> matrix;
 
 vi right_diagonal(int r, int c) {
-    vector<int> ans;
+    vi ans;
     while(r < dim and c < dim)
         ans.push_back(matrix[r++][c++]);
     return ans;
 }
 
 vi left_diagonal(int r, int c) {
-    vector<int> ans;
+    vi ans;
     while(r < dim and c >= 0)
         ans.push_back(matrix[r++][c++]);
     return ans;
 }
 
-void print__(vector<int> arr) {
+void print__(vi arr) {
     for(auto a:arr) cout << a << " ";
     cout << endl;
 }
