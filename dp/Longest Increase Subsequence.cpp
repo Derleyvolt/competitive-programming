@@ -10,6 +10,8 @@ int dp[maxn];
 
 int ans;
 
+//N(n^2)
+
 // recursivo
 void solve(int idx=1) {
      if(idx >= arr.size())
@@ -21,7 +23,7 @@ void solve(int idx=1) {
           }
      }
      ans = max(ans, dp[idx]);
-     solve(idx+1);
+     solve(idx+1); // tail recursion, boa.
 }
 
 int solve() {
@@ -40,7 +42,5 @@ int solve() {
 }
 
 int main() {
-    arr.resize(100);
-    for(auto& a:arr) cin >> a;
-    
+     //...
 }
