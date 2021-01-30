@@ -8,6 +8,22 @@ vector<int> arr;
 
 int dp[maxn];
 
+int ans;
+
+// recursivo
+void solve(int idx=1) {
+     if(idx >= arr.size())
+          return;
+     dp[idx] = 1; // é importante isso ser 1
+     for(int i = 0; i < idx; i++) {
+          if(arr[i] < arr[idx]) {
+               dp[idx] = max(dp[idx], dp[i]+1);
+          }
+     }
+     ans = max(ans, dp[idx]);
+     solve(idx+1);
+}
+
 int solve() {
     int ans = 1;
     dp[0]   = 1;
