@@ -15,9 +15,7 @@ int solve(int idx, int w, int cnt) {
       return cnt;
     if (idx >= n or w < 0)
       return 0;
-    int ans = 0;
-    ans = max(ans, solve(idx + 1, w - arr[idx], cnt + 1));
-    return max(ans, solve(idx + 1, w, cnt));
+    return max(solve(idx + 1, w - arr[idx], cnt + 1), solve(idx + 1, w, cnt));
 }
 
 // menor state-space..
