@@ -8,6 +8,7 @@ using namespace std;
 // http://advancedmathyoungstudents.com/blog/2019/05/17/logarithms-as-digit-counters-in-any-base/
 
 int main() {
-    ll n; cin >> n
+    ll n; cin >> n;
+    int digits = log10(n) + 1; 
     cout << floor(log10(n)) + 1 << endl;
 }
