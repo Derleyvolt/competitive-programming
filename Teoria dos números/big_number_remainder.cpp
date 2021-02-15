@@ -2,7 +2,9 @@
 
 using namespace std; 
 
-int div(string s, int num) {
+// constrói o número a partir dos dígitos, exatamente como se estivéssemos construindo o número a partir da notação posicional
+
+int remainder(string s, int num) {
     int r = 0;
     for(auto a:s) {
         int d = a - '0';
@@ -12,8 +14,6 @@ int div(string s, int num) {
 }
 
 int main() {
-    ios_base::sync_with_stdio(false); 
-    cin.tie(NULL); 
-    cout << div("341", 3) << endl;
+    cout << remainder("341", 3) << endl;
     return 0;
 }
