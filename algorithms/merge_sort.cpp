@@ -45,7 +45,7 @@ void mergeSort(int arr[],int l,int r) {
     // o intervalo que será passado em cada um dos mergesorts seguintes
     // podem diferir, no máximo, em 1.
     mergeSort(arr, l, m);
-    mergeSort(arr, m+1, r); // 0..3
+    mergeSort(arr, m+1, r);
 
     // o primeiro merge sempre terá [0..1] como intervalo
     merge(arr, l, m, r);
