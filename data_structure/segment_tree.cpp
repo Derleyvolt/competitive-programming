@@ -18,7 +18,7 @@ void build(int i, int l, int r) {
     build(i * 2, l, m);
     build(i * 2 + 1, m + 1, r);
     
-    seg[i] = seg[u * 2] + seg[u * 2 + 1];
+    seg[i] = seg[i * 2] + seg[i * 2 + 1];
 }
 
 // O(logn)
@@ -35,7 +35,7 @@ void update(int i, int l, int r, int idx, int val) {
     else
         update(i * 2 + 1, m + 1, r, idx, val);
 
-    seg[i] = seg[u * 2] + seg[u * 2 + 1];
+    seg[i] = seg[i * 2] + seg[i * 2 + 1];
 }
 
 // O(logn)
@@ -43,7 +43,7 @@ int query(int i, int tl, int tr, int l, int r) {
     if (l > r)
         return 0;
     if (l == tl and r == tr)
-        return seg[u];
+        return seg[i];
 
     int m = (tl + tr) / 2;
     
@@ -56,6 +56,5 @@ int main() {
     int n;
     for(int i = 0; i < n; i++) cin >> arr[i];
     build(1, 0, n-1);
-    
     return 0;
 }
