@@ -24,7 +24,7 @@ void sqrt_decomp() {
         for (int i = l; i <= r;) {
             // verifica se i é múltiplo de len, se sim, l aponta pro inicio de um bloco.
             // além disso, precisamos verificar se o intervalo [l, r] engloba inteiramente
-            // o bloco iniciando em l e terminando em i + len -1...
+            // o bloco iniciando em l terminado em i + len-1...
             if (i % len == 0 && i + len - 1 <= r) {
                 ans += b[i / len];
                 i += len;
