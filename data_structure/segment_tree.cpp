@@ -9,7 +9,7 @@ int seg[4 * maxn], arr[maxn];
 // O(n)
 void build(int i, int l, int r) {
     if (l == r) {
-        seg[u] = a[l];
+        seg[u] = arr[l];
         return;
     }
 
