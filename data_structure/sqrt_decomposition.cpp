@@ -18,7 +18,7 @@ void sqrt_decomp() {
 
     // toda posição que for múltipla de len será o início de um bloco..    
 
-    // queries..
+    // consultas..
     for(auto [l, r] : vii{ {0, 1}, {1, 3}, {0, 4}, {0, 6} }) {
         int ans = 0;
         for (int i = l; i <= r;) {
