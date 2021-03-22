@@ -40,6 +40,23 @@ void update(int i, int l, int r, int idx, int val) {
 
 // O(logn)
 int query(int i, int tl, int tr, int l, int r) {
+    if (tl > r or tr < l)
+        return 0;
+    if (l <= tl and r >= tr)
+        return seg[i];
+
+    int m = (tl + tr) / 2;
+    
+    int a = query(i * 2, tl, m, l, r);
+    int b = query(i * 2 + 1, m + 1, tr, l, r);
+    return a + b;
+}
+
+/*
+
+uma outra versão da query function..
+
+int query(int i, int tl, int tr, int l, int r) {
     if (l > r)
         return 0;
     if (l == tl and r == tr)
@@ -48,9 +65,10 @@ int query(int i, int tl, int tr, int l, int r) {
     int m = (tl + tr) / 2;
     
     int a = query(i * 2, tl, m, l, min(r, m));
-    int b = query(i * 2 + 1, m + 1, tr, max(l, m + 1), r);
+    int b = query(i * 2 + 1, m + 1, tr, max(l, m+1), r);
     return a + b;
 }
+*/
 
 int main() {
     int n;
