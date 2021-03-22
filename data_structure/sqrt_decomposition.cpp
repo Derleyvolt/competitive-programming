@@ -9,14 +9,15 @@ vector<int> arr;
 
 // O(sqrt(n))
 void sqrt_decomp() {
-    int len = (int)sqrt(n) + 1; // size of the block and the number of blocks
+    int len = (int)sqrt(n) + 1; // cada bloco terá tamanho = len. [ exceto, possivelmente, o último bloco
+    // caso 'n' não seja múltiplo de ceil(sqrt(n)) ]
     vector<int> b(len);
-    // em cada índice do vetor b terá o somatório de len elementos consecutivos.. exceto, possivelmente, no último bloco, 
-    // caso n não seja múltiplo de ceil(sqrt(n)).
+    // em cada índice do vetor b terá o somatório de len elementos consecutivos.. [ exceto, possivelmente, no último bloco
+    // caso 'n' não seja múltiplo de ceil(sqrt(n)) ]
     for (int i = 0; i < n; i++)
         b[i / len] += arr[i];
 
-    // toda posição que for múltipla de len será o início de um bloco..    
+    // toda posição que for múltipla de len será o início de um bloco.. 0-indexed.    
 
     // consultas..
     for(auto [l, r] : vii{ {0, 1}, {1, 3}, {0, 4}, {0, 6} }) {
@@ -26,8 +27,8 @@ void sqrt_decomp() {
             // além disso, precisamos verificar se o intervalo [l, r] engloba inteiramente
             // o bloco iniciando em l terminado em i + len-1...
             if (i % len == 0 && i + len - 1 <= r) {
-                ans += b[i / len];
-                i += len;
+                ans += b[i / len]; 
+                i += len; // salta pro próximo bloco
             }
             else {
                 // essa parte do código será linear nos extremos do intervalo
