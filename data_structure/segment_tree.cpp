@@ -40,8 +40,10 @@ void update(int i, int l, int r, int idx, int val) {
 
 // O(logn)
 int query(int i, int tl, int tr, int l, int r) {
+    // fora dos limites da consulta
     if (tl > r or tr < l)
         return 0;
+    // o intervalo de busca está dentro dos limite da consulta
     if (l <= tl and r >= tr)
         return seg[i];
 
