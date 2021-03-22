@@ -10,6 +10,7 @@ vi seg[4 * maxn];
 
 vi arr(maxn);
 
+// O(nlogn)
 void build(int i, int l, int r) {
     if(l == r) {
         seg[i].push_back(arr[l]);
@@ -27,8 +28,20 @@ void build(int i, int l, int r) {
     merge(a.begin(), a.end(), b.begin(), b.end(), seg[i]);
 }
 
-// void query(..) {...};
-// a função de consulta é muito dependente do problema..
+int query(int i, int tl, int tr, int l, int r) {
+    if(tl > r or tr < l)
+        return 0;
+    if(l <= tl and r >= tr) {
+        // .. geralmente roda uma busca binária aqui e etc..          
+    }
+    
+    int m = (tl+tr)/2;
+    
+    int a = query(i * 2, tl, m, l, r);
+    int b = query(i * 2 + 1, m+1, tr, l, r);
+    
+    return a + b;
+}
 
 void main() {
     int n; cin >> n;
