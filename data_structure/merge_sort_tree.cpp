@@ -25,7 +25,7 @@ void build(int i, int l, int r) {
     vi& a = seg[i * 2];
     vi& b = seg[i * 2 + 1];
 
-    merge(a.begin(), a.end(), b.begin(), b.end(), seg[i]);
+    merge(a.begin(), a.end(), b.begin(), b.end(), back_inserter(seg[i]));
 }
 
 int query(int i, int tl, int tr, int l, int r) {
