@@ -39,6 +39,9 @@ void update(int i, int l, int r, int idx, int val) {
 }
 
 // O(logn)
+// em cada nível da árvore será visitado no máximo 4 vértices e como a árvore tem logn níveis,
+// a query fará no máximo 4 * logn visitas.
+// é fácil entender pq a query faz, no máximo, 4 visitas por nível..
 int query(int i, int tl, int tr, int l, int r) {
     // fora dos limites da consulta
     if (tl > r or tr < l)
