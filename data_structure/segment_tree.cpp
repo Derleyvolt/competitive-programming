@@ -6,6 +6,8 @@ const int maxn = 1e5 + 10;
 
 int seg[4 * maxn], arr[maxn];
 
+
+
 // O(n)
 void build(int i, int l, int r) {
     if (l == r) {
@@ -20,6 +22,8 @@ void build(int i, int l, int r) {
     
     seg[i] = seg[i * 2] + seg[i * 2 + 1];
 }
+
+
 
 // O(logn)
 void update(int i, int l, int r, int idx, int val) {
@@ -38,10 +42,13 @@ void update(int i, int l, int r, int idx, int val) {
     seg[i] = seg[i * 2] + seg[i * 2 + 1];
 }
 
-// O(logn)
+
+
 // em cada nível da árvore será visitado no máximo 4 vértices e como a árvore tem logn níveis,
 // a query fará no máximo 4 * logn visitas.
 // é fácil entender pq a query faz, no máximo, 4 visitas por nível..
+
+// O(logn)
 int query(int i, int tl, int tr, int l, int r) {
     // fora dos limites da consulta
     if (tl > r or tr < l)
@@ -74,6 +81,8 @@ int query(int i, int tl, int tr, int l, int r) {
     return a + b;
 }
 */
+
+
 
 int main() {
     int n;
