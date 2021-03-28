@@ -2,11 +2,11 @@
 
 using namespace std;
 
-// TODOS OS ALGORITMOS DO STL NÃO INCLUEm O FINAL DO INTERVALO, OU SEJA, [begin, end).
+// TODOS OS ALGORITMOS DO STL NÃO INCLUEM O FINAL DO INTERVALO, OU SEJA, [begin, end).
 
 
 // 1 - É possível usar iterators literalmente como índices num container
-// 2 - É possível mesclar iteratos com índices (inteiros).
+// 2 - É possível mesclar iterators com índices (inteiros).
 
 void ex1() {
     vector<int> arr = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
