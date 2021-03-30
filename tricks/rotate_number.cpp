@@ -28,4 +28,12 @@ void rotate_ex(int n) {
 int main() {
     int n; cin >> n;
     rotate_ex(n);
+     
+    // usando STL
+    string s = "123456"; 
+  
+    for(int i = 0; i < s.size(); i++) {
+        rotate(s.begin(), s.begin() + 1, s.end());
+        for(auto a:s) cout << a << " "; cout << endl; 
+    }
 }
