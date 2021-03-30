@@ -36,5 +36,9 @@ int main() {
     auto it_menor = min_element(arr.begin(), arr.end());
     cout << abs(it_maior - it_menor) + 1 << endl;
     cout << abs(distance(it_maior, it_menor)) + 1 << endl;
+    
+    // it_menor - arr.begin() me retorna o índice do elemento 0-indexed.
+    cout << "index: " << (it_menor - arr.begin()) << endl;
+    
     return 0;
 }
