@@ -7,32 +7,37 @@
 
 using namespace std;
 
-#define MAXN 1000
+#define vi vector<int>
 
-int BIT[MAXN], n;
+int n;
+
+vi BIT, arr;
 
 void update(int i, int v) {
-      for(; i <= n; i += i&-i)
+      for(++i; i <= n; i += i&-i)
         BIT[i] += v;
 }
 
 int query(int v) {
      int sum = 0;
-     for(; v > 0; v -= v&-v)
+     for(++i; v > 0; v -= v&-v)
         sum += BIT[v];
      return sum;
 }
 
-// não é necessário..
-int query(int a, int b) {
-    if(a > 1)
-        return query(b) - query(a-1);   
-    return query(b);
+int query(int l, int r) {
+    return query(r) - query(l-1);
 }
 
 int main() {
-    n = 10;
-    for(int i = 1; i <= n; i++)
-        update(i, i);
-    cout << query(3, 5) << endl;
+   cin >> n;
+   arr.resize(n);
+   BIT.resize(n+1);
+   for(int i = 0; i < n; i++) {
+       cin >> arr[i];
+       update(i, arr[i]);
+   }
+   
+   // query -> [2, 4]
+   cout << query(2, 4) << endl;
 }
