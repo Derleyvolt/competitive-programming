@@ -28,7 +28,7 @@ int query(int i) {
 int main() {
     int n; cin >> n;
     vi arr(n);
-    BIT.resize(n+1, INF);
+    BIT.resize(maxn+1, INF);
     for(int i = 0; i < n; i++) {
         cin >> arr[i];
         update(i+1, arr[i]);
