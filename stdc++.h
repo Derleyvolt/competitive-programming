@@ -65,7 +65,7 @@ void db(int val, const char* name) {
 template<class vet>
 void db(vet arr, const char* name) {
     std::cout << name << " -> [ ";
-    for(auto a : arr) std::cout << a << ", ";
+    for(auto a : arr) std::cout << a << " ";
     std::cout << "]" << std::endl;
 }
 
