@@ -45,28 +45,28 @@
 
 // Macros e funções definidas por mim..
 
-mt19937 gen(time(NULL));
+std::mt19937 gen(time(NULL));
 
 int RNG(int min, int max) {
-    uniform_int_distribution<int> generator(min, max);
+    std::uniform_int_distribution<int> generator(min, max);
     return generator(gen);
 }
 
 void db(const char* name, int val) {
-    cout << name << " -> " << val << endl;
+    std::cout << name << " -> " << val << std::endl;
 }
 
 void db(int val, const char* name) {
-    cout << name << " -> " << val << endl;
+    std::cout << name << " -> " << val << std::endl;
 }
 
 // pode ser passado qualquer container que tenha begin e end como membros e que tenha 
 // um tipo aceito pelo <<operator do cout como argumento.
 template<class vet>
 void db(vet arr, const char* name) {
-    cout << name << " -> [ ";
-    for(auto a : arr) cout << a << ", ";
-    cout << "]" << endl;
+    std::cout << name << " -> [ ";
+    for(auto a : arr) std::cout << a << ", ";
+    std::cout << "]" << std::endl;
 }
 
 #define NAME(v) #v
