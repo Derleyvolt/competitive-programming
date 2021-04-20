@@ -1,3 +1,7 @@
+// https://medium.com/@kumarrocky436/dfs-time-stamp-on-nodes-da76a51a50cb
+// essa técnica é utilizada em vários algoritmos relacionados a grafos..
+
+
 #include <bits/stdc++.h>
 
 using namespace std;
