@@ -60,16 +60,12 @@ void db(int val, const char* name) {
     std::cout << name << " -> " << val << std::endl;
 }
 
-// pode ser passado qualquer container que tenha begin e end como membros e que tenha 
-// um tipo aceito pelo <<operator do cout como argumento.
 template<class vet>
 void db(vet arr, const char* name) {
     std::cout << name << " -> [ ";
-    for(auto a : arr) std::cout << a << " ";
-    std::cout << "]" << std::endl;
+    for (int i = 0; i < (int)arr.size() - 1; i++) std::cout << arr[i] << ", ";
+    std::cout << arr.back() << " ]" << std::endl;
 }
 
 #define NAME(v) #v
 #define db(arg) db(arg, NAME(arg))
-
-
