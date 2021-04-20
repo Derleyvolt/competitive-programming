@@ -14,16 +14,16 @@ int chegada[maxn], saida[maxn], visited[maxn];
 
 vi G[maxn];
 
-int timer = 1;
+int timer = 0;
 
 void dfs(int s) {
-    chegada[s] = timer++;
+    chegada[s] = ++timer;
     visited[s] = 1;
     for(int u : G[s]) {
         if(visited[u] != 1)
             dfs(u);
     }
-    saida[s] = timer++;
+    saida[s] = ++timer;
 }
 
 int main() {
