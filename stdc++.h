@@ -45,8 +45,6 @@
 
 // Macros e funções definidas por mim..
 
-using namespace std;
-
 mt19937 gen(time(NULL));
 
 int RNG(int min, int max) {
