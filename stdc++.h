@@ -60,12 +60,23 @@ void db(int val, const char* name) {
     std::cout << name << " -> " << val << std::endl;
 }
 
-template<class vet>
-void db(vet arr, const char* name) {
-    std::cout << name << " -> [ ";
+template<class vi>
+void db(vi arr, const char* name) {
+    std::cout << name << " -> [";
     for (int i = 0; i < (int)arr.size() - 1; i++) std::cout << arr[i] << ", ";
-    std::cout << arr.back() << " ]" << std::endl;
+    std::cout << arr.back() << "]" << std::endl;
+}
+
+template<class vii>
+void dbm(vii arr, const char* name) {
+    std::cout << name << " -> [";
+    for (int i = 0; i < (int)arr.size() - 1; i++) {
+        auto [a, b] = arr[i]; 
+        std::cout << "[" << a << ", " << b << "], ";
+    }
+    std::cout << "[" << arr.back()[0] << ", " << arr.back()[1] << "]]" << std::endl;
 }
 
 #define NAME(v) #v
 #define db(arg) db(arg, NAME(arg))
+#define dbm(arg) dbm(arg, NAME(arg))
