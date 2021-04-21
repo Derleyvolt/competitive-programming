@@ -45,6 +45,8 @@
 
 // Macros e funções definidas por mim..
 
+#define NAME(v) #v
+
 std::mt19937 gen(time(NULL));
 
 int RNG(int min, int max) {
@@ -52,31 +54,40 @@ int RNG(int min, int max) {
     return generator(gen);
 }
 
-void db(const char* name, int val) {
-    std::cout << name << " -> " << val << std::endl;
+template<class T>
+void db(T var, const char* name = NAME(var)) {
+    std::cout << name << " -> " << var << std::endl;
 }
 
-void db(int val, const char* name) {
-    std::cout << name << " -> " << val << std::endl;
-}
-
-template<class vi>
-void db(vi arr, const char* name) {
+template<class T>
+void dbvet(T& container, const char* name = NAME(container)) {
     std::cout << name << " -> [";
-    for (int i = 0; i < (int)arr.size() - 1; i++) std::cout << arr[i] << ", ";
-    std::cout << arr.back() << "]" << std::endl;
+    int len = container.size();
+    for (int i = 0; i < len - 1; i++) std::cout << container[i] << ", ";
+    std::cout << container.back() << "]" << std::endl;
 }
 
-template<class vii>
-void dbm(vii arr, const char* name) {
+template<class T>
+void dpmap(T& arr, const char* name = NAME(arr)) {
     std::cout << name << " -> [";
-    for (int i = 0; i < (int)arr.size() - 1; i++) {
+    int len = arr.size();
+    for (int i = 0; i < len - 1; i++) {
         auto [a, b] = arr[i]; 
         std::cout << "[" << a << ", " << b << "], ";
     }
     std::cout << "[" << arr.back()[0] << ", " << arr.back()[1] << "]]" << std::endl;
 }
 
-#define NAME(v) #v
-#define db(arg) db(arg, NAME(arg))
-#define dbm(arg) dbm(arg, NAME(arg))
+// mat não vem como referência pq a função deve aceitar também
+// uma matriz de int, ou char, por ex..
+template<class T>
+void dbmat(T mat, int n, int m, bool sep = false, const char* name = NAME(mat)) {
+    std::cout << name << " -->" << std::endl;
+    std::string s = sep ? " " : "";
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            std::cout << mat[i][j] << s;
+        }
+        std::cout << std::endl;
+    }
+}
