@@ -68,7 +68,7 @@ void dbvet(T& container, const char* name = NAME(container)) {
 }
 
 template<class T>
-void dpmap(T& arr, const char* name = NAME(arr)) {
+void dbmap(T& arr, const char* name = NAME(arr)) {
     std::cout << name << " -> [";
     int len = arr.size();
     for (int i = 0; i < len - 1; i++) {
@@ -91,3 +91,4 @@ void dbmat(T mat, int n, int m, bool sep = false, const char* name = NAME(mat)) 
         std::cout << std::endl;
     }
 }
+
