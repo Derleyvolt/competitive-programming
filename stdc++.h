@@ -68,14 +68,15 @@ void dbvet(T& container, const char* name = NAME(container)) {
 }
 
 template<class T>
-void dbmap(T& arr, const char* name = NAME(arr)) {
-    std::cout << name << " -> [";
-    int len = arr.size();
-    for (int i = 0; i < len - 1; i++) {
-        auto [a, b] = arr[i]; 
-        std::cout << "[" << a << ", " << b << "], ";
+void dbmap(T& mp, const char* name = NAME(mp)) {
+    std::cout << name << " -> ["; bool fl = 0;
+    for (auto [a, b] : mp) {
+        if (name == NULL)
+            std::cout << ", ";
+        std::cout << "[" << a << ", " << b << "]";
+        name = NULL;
     }
-    std::cout << "[" << arr.back()[0] << ", " << arr.back()[1] << "]]" << std::endl;
+    std::cout << "]" << std::endl;
 }
 
 // mat não vem como referência pq a função deve aceitar também
@@ -92,3 +93,7 @@ void dbmat(T mat, int n, int m, bool sep = false, const char* name = NAME(mat)) 
     }
 }
 
+#define dbmat(mat, n, m, sep) dbmat(mat, n, m, sep, NAME(mat))
+#define dbmap(arr) dbmap(arr, NAME(arr))
+#define db(var) db(var, NAME(var))
+#define dbvet(cont) dbvet(cont, NAME(cont))
