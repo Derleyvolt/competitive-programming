@@ -43,7 +43,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
-// Macros e funções definidas por mim..
+// MACRO E FUNÇÕES QUE AUXILIAM A DEBUGAR
 
 #define NAME(v) #v
 
