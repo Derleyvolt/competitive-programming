@@ -36,6 +36,13 @@ int LCA(int u, int v) {
         return u;
     if(is_ancestor(v, u))
         return v;
+    
+    // dá pra provar isso usando o resultado https://pt.overleaf.com/read/fszrpzvsydsp
+    // a prova do link pode se generalizada..
+    
+    // Quando saltamos 2^i caras pra cima significa que o 2^(i+1) (o i da iteração anterior) é um ancestral comum de u e v
+    // e utilizando a prova acima (pra base 2) é possível mostrar que é sempre possível chegar
+    // no vértice de altura 2^(i+1)-1
     for (int i = log; i >= 0; --i) {
         if (!is_ancestor(up[u][i], v))
             u = up[u][i];
