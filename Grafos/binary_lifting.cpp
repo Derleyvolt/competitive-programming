@@ -5,7 +5,7 @@ using namespace std;
 #define vi  vector<int>
 
 const int maxn = 100;
-const int log  = 20;
+const int clog  = 20;
 
 vi adj[maxn];
 
@@ -17,7 +17,7 @@ void dfs(int s, int p) {
     time_stamp[s][0] = ++timer;
     up[s][0] = p;
     // obtendo os ancestrais que estão a potencias de 2 de distancia por recorrencia..
-    for(int i = 1; i <= log; i++)
+    for(int i = 1; i <= clog; i++)
         up[s][i] = up[up[s][i-1]][i-1];
     for(int u : G[s]) {
         if(u != p)
@@ -43,15 +43,19 @@ int LCA(int u, int v) {
     // Quando saltamos 2^i caras pra cima significa que o 2^(i+1) (o i da iteração anterior) é um ancestral comum de u e v
     // e utilizando a prova acima (pra base 2) é possível mostrar que é sempre possível chegar
     // no vértice de altura 2^(i+1)-1
-    for (int i = log; i >= 0; --i) {
+    for (int i = clog; i >= 0; --i) {
         if (!is_ancestor(up[u][i], v))
             u = up[u][i];
     }
     return up[u][0];
 }
 
-int main() {
-    int root = 1;
+void preprocess(int root) {
     dfs(root, root);
+    timer = 0;
+}
+
+int main() {
+    preprocess(1);
     return 0;
 }
