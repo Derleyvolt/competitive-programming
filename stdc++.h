@@ -63,8 +63,12 @@ template<class T>
 void dbvet(T& container, const char* name = NAME(container)) {
     std::cout << name << " -> [";
     int len = container.size();
-    for (int i = 0; i < len - 1; i++) std::cout << container[i] << ", ";
-    std::cout << container.back() << "]" << std::endl;
+    for (int i = 0; i < len; i++) {
+        if(i < len-1) 
+            std::cout << container[i] << ", ";
+        else
+            std::cout << container[i] << "]" << std::endl;
+    }
 }
 
 template<class T>
