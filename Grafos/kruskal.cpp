@@ -10,7 +10,7 @@ int parent[maxn];
 int n, m;
 
 void init(int n) {
-    for(int i = 0; i < n; i++)
+    for(int i = 0; i <= n; i++)
         parent[i] = i;
 }
 
@@ -25,7 +25,7 @@ void join(int u, int v) {
     parent[v] = u;
 }
 
-array<int, 3> arr[maxm]; // u, v e w
+array<int, 3> arr[maxm]; // w, u, v.. w vem primeiro em função da ordenação
 
 // às vezes é melhor usar uma struct
 struct e {
@@ -56,7 +56,7 @@ int mst() {
     }
 */  
     for(int i = 0; i < m; i++) {
-        auto [u, v, w] = arr[i];
+        auto [w, u, v] = arr[i];
 
         if(root(u) != root(v)) {
             ans += w;
