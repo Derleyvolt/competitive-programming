@@ -8,7 +8,7 @@ using namespace std;
 
 const int maxn = 3010;
 
-// A MENOR STRING QUE POSSUI 'A' E 'B' COMO SUBSEQUÊNCIA.
+// O TAMANHO DA MENOR STRING QUE POSSUI 'A' E 'B' COMO SUBSEQUÊNCIA.
 
 string A = "AGGTAB", B = "GXTXAYB";
 
