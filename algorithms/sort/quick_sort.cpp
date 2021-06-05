@@ -4,7 +4,9 @@ using namespace std;
  
 // O coração desse algoritmo ta na partição
 
-// particiona o array
+// particiona o array, de tal forma que o pivor, o último elemento do intervalo [low, high] nesse caso, 
+// terminará na mesma posição que ele estaria caso o array estivesse ordenado, pois todos os elementos menores que ele
+// ficarão antes dele e os maiores após ele.
 int Partition(vector<int>& arr, int low, int high) {
     int pivot, idx;
     idx   = low;
@@ -22,18 +24,16 @@ int Partition(vector<int>& arr, int low, int high) {
     return idx;
 }
  
-int quick_sort(vector<int>& arr, int low, int high) {
+void quick_sort(vector<int>& arr, int low, int high) {
     int idx;
 
     if(low < high) {
         idx = Partition(arr, low, high);
 
-          // chama quick_sort recurisvamente para as duas metades do intervalo
+        // chama quick_sort recurisvamente para as duas metades do intervalo
         quick_sort(arr, low, idx-1);
         quick_sort(arr, idx+1, high);
     }
-
-    return 0;
 }
 
 int main() {
