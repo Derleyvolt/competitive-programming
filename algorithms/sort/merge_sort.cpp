@@ -36,7 +36,7 @@ void merge(int arr[], int l, int m, int r)
 }
 
 // os comentários no mergesort foram todos provados informalmente por mim..
-void mergeSort(int arr[],int l,int r) {
+void merge_sort(int arr[], int l, int r) {
     // l nunca é maior que r.
     if(l>=r)
         return;
@@ -47,8 +47,8 @@ void mergeSort(int arr[],int l,int r) {
     
     // o intervalo que será passado em cada um dos mergesorts seguintes
     // podem diferir em tamanho, no máximo, em 1.
-    mergeSort(arr, l, m);
-    mergeSort(arr, m+1, r);
+    merge_sort(arr, l, m);
+    merge_sort(arr, m+1, r);
 
     // o primeiro merge sempre terá [0..1] como intervalo
     merge(arr, l, m, r);
@@ -57,6 +57,6 @@ void mergeSort(int arr[],int l,int r) {
 int main() {
     int arr[] = { 1, 3, 2 };
     int n = 3;
-    mergeSort(arr, 0, n-1);
+    merge_sort(arr, 0, n-1);
     return 0;
 }
