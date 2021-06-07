@@ -16,6 +16,7 @@ int solve(int i, int j) {
     if(i >= s1.size())
         return (s2.size()-j);
 
+    // se são iguais então nenhuma operação precisa ser feita.
     if(s1[i] == s2[j])
         return solve(i+1, j+1);
     
