@@ -4,12 +4,15 @@ using namespace std;
 
 string s1, s2;
 
+// número mínimo de operações necessárias pra s1 tornar-se s2,
+// sendo as operações remover, inserir e substituir.
+
 int solve(int i, int j) {
     // s1 > s2, então eu removo (s1.size()-i) caracteres
     if(j >= s2.size())
         return (s1.size()-i);
   
-    // s2 > s1, então eu removo (s2.size()-j) caracteres    
+    // s2 > s1, então eu insiro (s2.size()-j) caracteres    
     if(i >= s1.size())
         return (s2.size()-j);
 
