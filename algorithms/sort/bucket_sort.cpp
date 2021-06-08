@@ -2,6 +2,20 @@
 
 using namespace std;
 
+// O(n^2) mas tem O(n) como melhor caso.
+void insertion_sort(vector<int>& arr) {
+    int aux, i, len = arr.size();
+    for (int j = 1; j < len; j++) {
+        aux = arr[j];
+        i = j-1;
+        while ((i >= 0) && (arr[i] > aux)) {
+            arr[i+1] = arr[i];
+            i = i - 1;
+        }
+        arr[i+1] = aux;
+    }
+}
+
 void debug_buckets(vector<vector<int>>& buckets) {
     int len = buckets.size();
     for(int i = 0; i < len; i++) {
@@ -48,7 +62,10 @@ void bucket_sort(vector<int>& arr) {
 
     // ordena os buckets
     for(auto& vet : buckets) {
-        sort(vet.begin(), vet.end());
+        // O bucket_sort geralmente é utilizado em conjunto com o InsertionSort,
+        // pois o InsertionSort tem melhor caso linear, e o melhor
+        // caso surge quando os elementos estão quase ordenados..
+        insertion_sort(vet);
     }
 
     //debug_buckets(buckets);
@@ -67,7 +84,7 @@ int main() {
 
     vector<int> arr(1000);
 
-    for(int& a:arr) a = rand() % 10000;
+    for(int& a:arr) a = rand() % 1000000;
 
     bucket_sort(arr);
 
