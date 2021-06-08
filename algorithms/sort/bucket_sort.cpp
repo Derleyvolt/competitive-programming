@@ -41,9 +41,10 @@ bool is_ordered(vector<int>& arr) {
     return true;
 }
 
-const int bucket_count = 100;
+// fiz testes com 1e5 ~ 1e6 elementos.. 
+const int bucket_count = 10000;
 
-// haverá 101 baldes, essa constante pode ser alterada, é literalmente um número mágico, pois não
+// haverá 10001 baldes, essa constante pode ser alterada, é literalmente um número mágico, pois não
 // fiz nenhuma análise em cima disso..
 
 // a expressão (bucket_count * e/maxim) me garante a seguinte propriedade:
@@ -66,6 +67,11 @@ void bucket_sort(vector<int>& arr) {
         // pois o InsertionSort tem melhor caso linear, e o melhor
         // caso surge quando os elementos estão quase ordenados..
         insertion_sort(vet);
+        
+        
+        //heap_sort(vet);
+        //merge_sort(vet);
+        //quick_sort(vet);
     }
 
     //debug_buckets(buckets);
@@ -80,19 +86,22 @@ void bucket_sort(vector<int>& arr) {
 }
 
 int main() {
+    int len;
+    cout << "Digite o tamanho do vetor" << endl;
+    cin >> len;
+
     srand(time(NULL));
+    vector<int> arr(len);
 
-    vector<int> arr(1000);
-
-    for(int& a:arr) a = rand() % 1000000;
+    for(int i = 0; i < len; i++) arr[i] = rand() % 10000000;
+    
+    clock_t t = clock();
 
     bucket_sort(arr);
 
+    t = clock() - t;
+
+    cout << "Tempo de execucao: " << ((double)t)/((CLOCKS_PER_SEC)) << " milisegundos" << endl;
     cout << boolalpha << is_ordered(arr) << endl;
-
-    for(int e : arr) {
-        cout << e << endl;
-    }
-
     return 0;
 }
