@@ -33,9 +33,9 @@ const int bucket_count = 100;
 // fiz nenhuma análise em cima disso..
 
 // a expressão (bucket_count * e/maxim) me garante a seguinte propriedade:
-// se o elemento x cair no balde de índice p, então qualquer elemento maior que x caíra ou no mesmo balde que ele
+// se o elemento x cair no balde de índice p, então qualquer elemento maior ou igual que x caíra ou no mesmo balde que ele
 // ou num balde com índice maior.
-// essa propriedade é essencial, do contrário não haveria como juntar os buckets sem algum esforço..
+// essa propriedade é essencial, do contrário não haveria como juntar os buckets pra forjar o array ordenado tão facilmente..
 
 void bucket_sort(vector<int>& arr) {
     int max_e = *max_element(arr.begin(), arr.end());
