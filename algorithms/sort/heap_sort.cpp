@@ -2,16 +2,16 @@
 
 using namespace std;
 
-void heap_down(vector<int>& arr, int i) {
+void heap_down(vector<int>& arr, int n, int i) {
     int l = i*2+1;
     int r = i*2+2;
 
     int temp = i;   
     // short-circuit, se o elemento for uma folha ele não vai entrar 
     // em nenhum desses if's e a recursão vai parar.
-    if(r < arr.size() && arr[temp] < arr[r])
+    if(r < n && arr[temp] < arr[r])
         temp = r;
-    if(l < arr.size() && arr[temp] < arr[l])
+    if(l < n && arr[temp] < arr[l])
         temp = l;
 
     if(temp != i) {
@@ -27,17 +27,11 @@ void heap_sort(vector<int>& arr) {
     for(int i = len/2; i >= 0; i--)
         heap_down(arr, i);
 
-    // dá pra fazer sem esse temporario, mas prefiro assim
-    vector<int> temp(arr.size());
-
     for(int i = len-1; i >= 0; i--) {
-        // jogos os maiores caras da heap na parte de trás do array
-        temp[i] = arr[0];
         // boto o último elemento da heap no inicio e chamo heap_down pra 
         // obter uma heap novamente..
-        swap(arr[0], arr.back());
-        arr.pop_back();
-        heap_down(arr, 0);
+        swap(arr.front(), arr[i]);
+        heap_down(arr, i, 0);
     }
 
     arr = temp;
