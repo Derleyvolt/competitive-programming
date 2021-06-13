@@ -33,8 +33,6 @@ void heap_sort(vector<int>& arr) {
         swap(arr.front(), arr[i]);
         heap_down(arr, i, 0);
     }
-
-    arr = temp;
 }
 
 int main() {
