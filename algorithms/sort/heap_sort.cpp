@@ -16,7 +16,7 @@ void heap_down(vector<int>& arr, int n, int i) {
 
     if(temp != i) {
         swap(arr[temp], arr[i]);
-        heap_down(arr, temp);
+        heap_down(arr, n, temp);
     }
 }
 
