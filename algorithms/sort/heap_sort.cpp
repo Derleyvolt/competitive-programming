@@ -25,7 +25,7 @@ void heap_sort(vector<int>& arr) {
     // no intervalo [len/2, len] só há folhas, não precisamos chamar heap_down pra folhas, elas já são heaps,
     // por definição.
     for(int i = len/2; i >= 0; i--)
-        heap_down(arr, i);
+        heap_down(arr, len, i);
 
     for(int i = len-1; i >= 0; i--) {
         // boto o último elemento da heap no inicio e chamo heap_down pra 
