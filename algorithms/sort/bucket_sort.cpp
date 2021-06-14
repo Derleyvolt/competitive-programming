@@ -101,7 +101,7 @@ int main() {
 
     t = clock() - t;
 
-    cout << "Tempo de execucao: " << ((double)t)/((CLOCKS_PER_SEC)) << " milisegundos" << endl;
+    cout << "Tempo: " << ((double)t)/((CLOCKS_PER_SEC)) << " segundos" << endl;
     cout << boolalpha << is_ordered(arr) << endl;
     return 0;
 }
