@@ -2,6 +2,8 @@
 
 using namespace std;
 
+// Esse algoritmo é o mesmo algoritmo utilizado pelo std::sort da STL
+
 template<typename T>
 void insertion_sort(T arr[], int l, int r) {
     int i;
