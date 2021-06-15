@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-#include <math.h>
 
 using namespace std;
 
@@ -37,7 +36,7 @@ void heap_down(T arr[], int left, int right, int i) {
     }
 }
 
-// [i, j]
+// [l, r]
 template<typename T>
 void heap_sort(T arr[], int l, int r) {
     for(int i = r; i >= l; i--)
@@ -114,7 +113,7 @@ int main() {
     arr = new int[n];
 
     for(int i = 0; i < n; i++) {
-        arr[i] = RNG(1, 1000);
+        arr[i] = RNG(1, 1<<30);
     }
 
     clock_t t = clock();
