@@ -7,7 +7,10 @@ using namespace std;
 // particiona o array, de tal forma que o pivor, o último elemento do intervalo [low, high] nesse caso, 
 // terminará na mesma posição que ele estaria caso o array estivesse ordenado, pois todos os elementos menores que ele
 // ficarão antes dele e os maiores após ele.
-int Partition(vector<int>& arr, int low, int high) {
+int Partition(int arr[], int low, int high) {
+    // troca o último elemento (pivô) com algum outro elemento do vetor melhora MUITO
+    // a complexidade desse algoritmo em casos onde o array já está ordenado.
+    // swap(arr[low+(rand()%(high-low+1))], arr[0]);
     int pivot, idx;
     idx   = low;
     pivot = high;
@@ -24,7 +27,7 @@ int Partition(vector<int>& arr, int low, int high) {
     return idx;
 }
  
-void quick_sort(vector<int>& arr, int low, int high) {
+void quick_sort(int arr[], int low, int high) {
     int idx;
 
     if(low < high) {
@@ -37,9 +40,9 @@ void quick_sort(vector<int>& arr, int low, int high) {
 }
 
 int main() {
-    vector<int> arr = { 5, 3, 2, 1, 4, 9, 8, 72, 51 };
+    int arr[] = { 5, 3, 2, 1, 4, 9, 8, 72, 51 };
 
-    quick_sort(arr, 0, arr.size()-1);
+    quick_sort(arr, 0, sizeof(arr)/sizeof(int)-1);
 
     for(auto e : arr) {
         cout << e << endl;
