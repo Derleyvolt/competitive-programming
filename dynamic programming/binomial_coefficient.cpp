@@ -10,7 +10,7 @@ int solve(int n, int k) {
         return dp[n][k];
     if(k == 0 or k == n)
         return 1;
-    return dp[n][k] = solve(n-1, k-1) + solve(n-1, k); // relação de stifel
+    return dp[n][k] = solve(n-1, k-1) + solve(n-1, k); // relação de Stifel
 }
 
 int main() {
