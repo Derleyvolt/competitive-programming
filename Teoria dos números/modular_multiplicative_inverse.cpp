@@ -6,7 +6,7 @@ using namespace std;
 
 const ll m = 1e9 + 7;
 
-// basea-se no pequeno teorema de fermat, portanto m precisa ser primo.
+// basea-se no pequeno teorema de Fermat, portanto 'm' precisa ser primo e 'a' não pode ser múltiplo de 'm'.
 
 // https://cp-algorithms.com/algebra/module-inverse.html
 
