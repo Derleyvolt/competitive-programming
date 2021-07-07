@@ -1,104 +1,123 @@
-#include <bits/stdc++.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-using namespace std;
+typedef struct BSTree {
+    int val;
+    struct BSTree* left, *right;
+} Node;
 
-#include <bits/stdc++.h>
-  
-using namespace std;
-  
-struct node {
-    struct node* left;  
-    struct node* right;  
-    int data;  
-};  
-  
-// cria um nó
-node* newNode(int data)  {  
-    node* root   = new node;
-    node->data   = data;  
-    node->left   = NULL;  
-    node->right  = NULL;  
-    return root;
-}  
- 
-node* search(node* root, int data) {
-	// case base: a raiz é null ou o raiz tem o valor que procuramos
-    if (root == NULL || root->data == data)
-       return root;
-    
-	// valor é maior que o valor da raiz
-    if (root->data < data)
-       return search(root->right, data);
- 
-    // valor é menor que o valor da raiz
-    return search(root->left, data);
-}
- 
-node* insert(node* root, int data) {
-    // Se a árvore não é vazia, retorne um novo nó
-    if (root == NULL)
-        return newNode(data);
- 
-    // busque recursivamente
-    if (data < root->data)
-        root->left  = insert(root->left, data);
-    else if (data > root->data)
-        root->right = insert(root->right, data);
- 
-    // retorne o nó, sem alteração
-    return root;
+Node* criar_node(int val) {
+    Node* no = (Node*)malloc(sizeof(Node));
+    no->val  = val;
+    no->left  = NULL;
+    no->right  = NULL;
 }
 
-node* delete_node(node* root, int data) {
-   if (root == NULL) return root;
-      if (data < root->data)
-         root->left  = delete_node(root->left, data);
-      else if (data > root->key)
-         root->right = delete_node(root->right, data);
-   else {
-      if (root->left == NULL) {
-         node *temp = root->right;
-         delete root;
-         return temp;
-      }
-      else if (root->right == NULL) {
-         node *temp = root->left;
-         delete root;
-         return temp;
-      }
-      node* temp  = min_value(root->right);
-      root->data  = temp->data;
-      root->right = delete_node(root->right, temp->data);
-   }
-   return root;
-}
-
-void inorder(node* root) {
-    if (root != NULL) {
-        inorder(root->left);
-	cout << root->key << endl;
-        inorder(root->right);
+void inserir(Node** no, int val) {
+    if((*no) == NULL) {
+        (*no) = criar_node(val);
+    } else {
+        if(val > (*no)->val) {
+            inserir(&(*no)->right, val);
+        } else if(val < (*no)->val) {
+            inserir(&(*no)->left, val);
+        } else {
+            return;
+        }
     }
 }
 
-// o nó passado não deve ser nulo, senão levará a um comportamento indefinido..
-int minValue(struct node* node) {  
-    struct node* current = node;  
+int buscar(Node* no, int val) {
+    if(no == NULL)
+        return -1;
 
-    /* loop down to find the leftmost leaf */
-    while (current->left != NULL) {  
-        current = current->left;  
-    }  
-    return(current->data);  
-}  
+    if(no->val == val)
+        return 1;
+    
+    if(val > no->val)
+        return buscar(no->right, val);
+    else
+        return buscar(no->left, val);
+}
 
-// versão recursiva
-int min_value(node* root) {
-    if(root->left == NULL)
-        return root->data;
-    return min_value(root->left);
+Node* apagar(Node* node, int val) {
+	if(node == NULL)
+		return NULL;
+	if(node->val == val) {
+		
+	}
+}
+
+void percorrer(Node* node) {
+    if(node == NULL)
+		return;
+	percorrer(node->left);
+	printf("%d\n", node->val);
+	percorrer(node->right);
+}
+
+Node* min_value(Node* node) {
+    if(node == NULL)
+        return NULL;
+    while(node->left != NULL) {
+        node = node->left;
+    }
+
+    return node;
+}
+
+Node* remove_node(Node* node, int val) {
+    if(node == NULL)
+        return NULL;
+    if(node->val > val) {
+        node->left = remove_node(node->left, val);
+    } else if(node->val < val) {
+        node->right = remove_node(node->right, val);
+    } else {
+        Node* temp;
+        if(node->left == NULL) {
+            // O nó não tem filho á esquerda
+            temp = node->right;
+            free(node);
+            return temp;
+        } else if(node->right == NULL) {
+            // O nó não tem filho á direita
+            temp = node->left;
+            free(node);
+            return temp;
+        }
+
+        // O nó tem dois filhos
+
+
+        // quer o menor nó da subarvore à direita
+        temp = min_value(node->right);
+        // esse tal menor nó agora está na posição do cara deletado
+        node->val = temp->val;
+
+        // como esse tal menor nó foi puxado pra cima, a subarvore da qual
+        // ele era root precisa ser corrigida pois ele foi deletado
+        // daquela posicao..
+
+        // o cara que será deletado dessa vez por ser o 
+        // meu filho á direita, então preciso linkar o retorno
+        // ao meu novo filho á direita
+        node->right = remove_node(temp, temp->val);
+    }
+
+    return node;
 }
 
 int main() {
-    return 0;
+    BSTree* tree = NULL;
+
+    inserir(&tree, 10);
+    inserir(&tree, 11);
+    inserir(&tree, 12);
+    inserir(&tree, 13);
+
+    tree = remove_node(tree, 10);
+
+    percorrer(tree);
+    return 0;  
 }
