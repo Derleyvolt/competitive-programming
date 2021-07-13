@@ -42,9 +42,11 @@ vi string_search_all(string t, string p) {
     return ans;
 }
 
-// tricks para verifica se há pelo algum match de p em t.
+// tricks para verificar se há algum match de p em t.
 bool string_match(string t, string p) {
     string pattern = p;
+    // pq não tiramos o $ e fazemos e >= pattern.size() ?
+    // um caso onde isso dá ruim: t = abababaab p = aabaaba
     p.push_back('$');
     p.append(t);
     auto arr = prefix(p);
@@ -56,7 +58,7 @@ bool string_match(string t, string p) {
 }
 
 int main() {
-    string s = "rato_roeu_a_roupa_do_rei_de_roma";
+    string s = "rato roeu a roupa do rei de roma";
     string p = "ro";
 
     auto vet = string_search_all(s, p);
