@@ -59,7 +59,7 @@ vector<int> number_of_prefix_ocurrence(vector<int> pi, int n) {
     // todas as vezes que esse maior prefixo/sufixo aparecer, os menores também apareceram
   
     // o que esse for faz é exatamente isso, ele soma o número de aparições dos maiores prefixos que são
-    // sufixos aos prefixos que são prefixos qe terminam no mesmo índice.
+    // sufixos aos prefixos que são prefixos que terminam no mesmo índice.
     for (int i = n - 1; i > 0; i--)
         ans[pi[i-1]] += ans[i];
     for (int i = 0; i <= n; i++)
