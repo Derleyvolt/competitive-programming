@@ -50,8 +50,8 @@ vector<int> number_of_prefix_ocurrence(vector<int> pi, int n) {
     
     
     // esse segundo for é o coração da coisa, o cálculo do vetor pi 
-    // deixa alguns prefixos que terminam em i sombreados por pelo maior
-    // prefixo que termina em i e, portanto, esses prefixos menores que terminam em i
+    // deixa alguns prefixos que terminam em i sombreados pelo maior
+    // prefixo que é sufixo que termina em i e, portanto, esses prefixos menores que terminam em i
     // não são contabilizados..
   
     // dessa forma, se temos o tamanho do maior prefixo que também é sufixo de S[0..x]
