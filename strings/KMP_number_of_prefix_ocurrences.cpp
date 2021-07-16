@@ -29,7 +29,7 @@ vector<int> prefix(string s) {
 }
 
 // calcula o número de vezes em que os prefixos aparecem na string de modo mais intuitivo mas
-// com complexidade péssima, nada prático.
+// com complexidade pésima, nada prático.
 void number_of_prefix_ocurrence_BRUTE(vi pi, string s) {
     for (int i = 1; i < s.size(); i++) {
         int j = pi[i];
@@ -46,6 +46,9 @@ vector<int> number_of_prefix_ocurrence(vector<int> pi, int n) {
     // calcula a frequência dos maiores prefixos que são sufixos de S[0..i-1]
     for (int i = 0; i < n; i++)
         ans[pi[i]]++;
+    
+    
+    
     // esse segundo for é o coração da coisa, o cálculo do vetor pi 
     // deixa alguns prefixos que terminam em i sombreados por pelo maior
     // prefixo que termina em i e, portanto, esses prefixos menores que terminam em i
