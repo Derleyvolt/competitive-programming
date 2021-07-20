@@ -32,10 +32,14 @@ vi string_search_all(string t, string p) {
             idx++;
             if(idx == p.size()) {
                 ans.push_back(i-idx+1);
-                idx = 0;
+                idx = pi[idx-1];
             }
         } else if(idx > 0) {
             idx = pi[idx-1];
+            // sem o i-- o seguinte search dá ruim
+            // P = ABAB
+            // T = AABABx
+            i--;
         }
     }
 
