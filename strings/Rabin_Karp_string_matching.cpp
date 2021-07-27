@@ -43,18 +43,20 @@ vi Rabin_Karp(string P, string S) {
 
     ll hash_pattern = 0;
 
-    // calcula o hash do padrão, pra comparar posteriormente.
+    // calcula o hash do padrão, pra comparar posteriormente com as janelas
     for(int i = 0; i < pattern_len; i++) {
         hash_pattern = (hash_pattern + P[i] * power[i]) % m;
     }
 
-    if(prefix_hash[pattern_len-1] == hash_pattern) {
-        ans.push_back(0);
-    }
-
     // compara as janelas/substrings de tamanho pattern_len
-    for(int i = 1; i < text_len - pattern_len+1; i++) {
-        ll hs = (prefix_hash[i+pattern_len-1]-prefix_hash[i-1]+m)%m;
+    
+    // percorre n-m+1 hashed windows
+    // O(n) pra precomputar as potências da base
+    // O(m) pra calcular o hash do padrão
+    // O(n-m+1) comparar os hashs
+    // O(n+m + n-m+1)
+    for(int i = 0; i < text_len - pattern_len+1; i++) {
+        ll hs = i > 0 ? (prefix_hash[i+pattern_len-1]-prefix_hash[i-1]+m)%m : prefix_hash[i+pattern_len-1];
         if((hash_pattern*power[i])%m == hs) {
             ans.push_back(i);
         }
@@ -64,7 +66,7 @@ vi Rabin_Karp(string P, string S) {
 }
 
 int main() {
-    string text = "O rato roei a roupa do rei de roma";
+    string text = "O rato roeu a roupa do rei de roma";
     string pattern = "ro";
     preprocess();
     auto arr = Rabin_Karp(pattern, text);
