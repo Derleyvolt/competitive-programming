@@ -54,7 +54,10 @@ vi Rabin_Karp(string P, string S) {
     // O(n) pra precomputar as potências da base
     // O(m) pra calcular o hash do padrão
     // O(n-m+1) comparar os hashs
-    // O(n+m + n-m+1)
+    // Então podemos considerar a complexidade como O(n+m);
+    // A operação de módulo e a possibilidade de colisão são os gargalos
+    // desse algoritmo em relação ao KMP, mas há outras utilidades
+    // advindas da ideia desse algoritmo.
     for(int i = 0; i < text_len - pattern_len+1; i++) {
         ll hs = i > 0 ? (prefix_hash[i+pattern_len-1]-prefix_hash[i-1]+m)%m : prefix_hash[i+pattern_len-1];
         if((hash_pattern*power[i])%m == hs) {
