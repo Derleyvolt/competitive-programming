@@ -53,7 +53,7 @@ vi Rabin_Karp(string P, string S) {
     // percorre n-m+1 hashed windows
     // O(n) pra precomputar as potências da base
     // O(m) pra calcular o hash do padrão
-    // O(n-m+1) comparar os hashs
+    // O(n-m+1) comparar as janelas
     // Então podemos considerar a complexidade como O(n+m);
     // A operação de módulo e a possibilidade de colisão são os gargalos
     // desse algoritmo em relação ao KMP, mas há outras utilidades
