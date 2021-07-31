@@ -38,8 +38,10 @@ void ocurrence(string s, string p) {
 		// frequências das substrings de p que são prefixos de s.
 		freq[pi[i]]++;
 	}
-
-	for(int i = n-1; i > 0; i--) {
+	
+	// i = n; é importante, pois no caso: s = "aaa", p = "aaaaa"
+	// se i = n-1, prefixos não serão contados.
+	for(int i = n; i > 0; i--) {
 		// verifico se o maior prefixo que é sufixo de s terminando em i-1
 		// está em P e, se sim, somo ao número de ocorrências dele o número
 		// de ocorrências da substring da qual ele é prefixo e sufixo, pois
