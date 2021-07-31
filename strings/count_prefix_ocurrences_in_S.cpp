@@ -41,7 +41,10 @@ void ocurrence(string s) {
     // ás ocorrências do prefixo de tamanho i
     // pois o prefixo de tamanho i sombreia o
     // o prefixo de tamanho pi[i-1]
-    for(int i = n-1; i > 0; i--) {
+	
+	
+    // importante i = n, pois o lado direito o i é usado como tamanho	
+    for(int i = n; i > 0; i--) {
         freq[pi[i-1]] += freq[i];
     }
 
