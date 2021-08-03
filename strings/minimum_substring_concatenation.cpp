@@ -16,7 +16,7 @@ using namespace std;
 // e, além disso, |G| certamente divide |S|
 
 // Portanto só é necessário provar a volta, ou seja:
-// se |G| divide |S| e a função de prefixo tem aquela cara (citada anteriormente)
+// se |G| divide |S| e o vetor pi de KMP tem aquela cara (citada anteriormente)
 // então S é formada pela concatenação de G n vezes e o tamanho de G é dado por:
 // S.size() - pi.back(); 
 
