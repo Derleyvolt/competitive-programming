@@ -11,7 +11,7 @@ bool is_prime(ll n) {
         return false;
     if(n == 2)
         return true;
-    for(ll i = 3; i * i <= n; i++) {
+    for(ll i = 2; i * i <= n; i++) {
         if(n % i == 0)
             return false;
     }
