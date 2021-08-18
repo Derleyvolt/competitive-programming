@@ -12,6 +12,7 @@ using namespace std;
 
 struct Trie {
     Trie* node[maxn];
+    bool is_word = 0;
 };
 
 Trie* create_trie() {
@@ -24,19 +25,22 @@ Trie* create_trie() {
 
 // O(m), m = tamanho da input string
 void insert(Trie* trie, string& s, int idx = 0) {
-    if(idx >= s.size())
+    if(idx >= s.size()) {
+        trie->is_word = 1;
         return;
+    }
+    
     if(trie->node[s[idx]-'a'] == nullptr) {
         trie->node[s[idx]-'a'] = create_trie();
     }
-
+    
     insert(trie->node[s[idx]-'a'], s, idx+1);
 }
 
 // O(m), m = tamanho da string
 bool search(Trie* trie, string& s, int idx = 0) { 
     if(idx >= s.size())
-        return true;
+        return tr->is_word;
     if(trie->node[s[idx]-'a'] == nullptr) {
         return false;
     }
@@ -54,7 +58,7 @@ int main() {
     s = "carro";
     insert(tr, s);
 
-    s = "carr"; // verificando se existe o prefixo/string carr na Trie
+    s = "carr";
 
     cout << boolalpha << search(tr, s) << endl;
     s = "rato";
