@@ -7,6 +7,11 @@ int is_power2(int n) {
     return !(n & (n-1));
 }
 
+int is_power4(int n) {
+    // também é muito fácil de entender..
+    return (!(n & (n-1))) && (n & (0x55555555));
+}
+
 int main() {
     cout << is_power2(63) << endl;
     cout << is_power2(64) << endl;
