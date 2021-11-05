@@ -2,6 +2,11 @@
 
 using namespace std;
 
+// A expressão precisa estar em prefix order avaliable, ex: 
+
+// Infix:  A * B + C / D
+// Prefix: + * A B / C D
+
 struct Tree {
     string op;
 
