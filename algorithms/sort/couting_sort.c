@@ -16,10 +16,10 @@ void counting_sort(int arr[], int n) {
 
     int idx = 0;
 
-    for(int i = 0; i < MAXN; i++) {
-        int cnt = freq[i];
-        for(int j = 0; j < cnt; j++) {
+    for(int i = 0; i < MAXN && n; i++) {
+        for(int j = 0; j < freq[i]; j++) {
             arr[idx++] = i+1;
+            n--;
         }
     }
 }
